@@ -1,8 +1,7 @@
-# WinForm
+# WFThesisManaMidtermTest
 WinForm Application code by CSharp
 
 ***
-> created by *Le Hong Phuc* and *Pham Khanh Huy*
+> created by *Le Hong Phuc*
 
 🌻 **code, code and code**
-# WFThesisManaMidtermTest
