@@ -117,7 +117,7 @@ namespace ThesisManagementProject.Database
 
         #region SQL Execute by Command
 
-        protected void SQLExecuteByCommand(string command)
+        public void SQLExecuteByCommand(string command)
         {
             try
             {

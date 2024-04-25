@@ -3,6 +3,8 @@
 -- go
 
 -- Data Source=DESKTOP-4FIVTNT\SQLEXPRESS;Initial Catalog=ThesisManagement;Integrated Security=True;Encrypt=False
+-- Scaffold-DbContext "Data Source=DESKTOP-4FIVTNT\SQLEXPRESS;Initial Catalog=ThesisManagement;Integrated Security=True;Encrypt=False" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
 use ThesisManagement
 go
 
@@ -31,7 +33,7 @@ create table Thesis (
     idthesis nvarchar(10) primary key not null,
     topic text not null,
     field nvarchar(50) not null,
-    tslevel nvarchar(10) not null,
+    level nvarchar(10) not null,
     maxmembers int not null,
     description text not null,
     publishdate datetime not null,

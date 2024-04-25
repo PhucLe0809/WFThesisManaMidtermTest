@@ -31,6 +31,7 @@ namespace ThesisManagementProject
         private UCThesisCreate uCThesisCreate = new UCThesisCreate();
         private UCThesisDetails uCThesisDetails = new UCThesisDetails();
         private UCThesisLine thesisLineClicked = new UCThesisLine();
+        private UCThesisNotCompleted uCThesisNotCompleted = new UCThesisNotCompleted();
         private UCDashboardStatistical uCDashboardStatistical = new UCDashboardStatistical();
         private FThesisFilter fThesisFilter = new FThesisFilter();
 
@@ -114,6 +115,7 @@ namespace ThesisManagementProject
         {
             myProcess.ButtonStandardColor(gGradientButtonViewThesis);
             myProcess.ButtonStandardColor(gGradientButtonStatistical);
+            myProcess.ButtonStandardColor(gGradientButtonNotCompleted);
         }
         private void AddUserControl(Guna2GradientButton button, UserControl userControl)
         {
@@ -137,7 +139,7 @@ namespace ThesisManagementProject
             }
             uCThesisList.SetNumThesis(listThesis.Count, true);
         }
-        public void NotificationJump(Notification notification) 
+        public void NotificationJump(Notification notification)
         {
             uCThesisList.NotificationJump(notification);
         }
@@ -208,7 +210,7 @@ namespace ThesisManagementProject
             uCThesisDetails.FlagWaiting = this.flagStuMyTheses && (thesisClicked.Status == EThesisStatus.Registered || thesisClicked.Status == EThesisStatus.Published);
             uCThesisDetails.SetInformation(this.thesisClicked, people);
             gPanelDataView.Controls.Add(uCThesisDetails);
-            
+
         }
         private void ThesisLine_Clicked(object sender, EventArgs e)
         {
@@ -307,5 +309,14 @@ namespace ThesisManagementProject
 
         #endregion
 
+        private void gGradientButtonNotCompleted_Click(object sender, EventArgs e)
+        {
+            AllButtonStandardColor();
+            myProcess.ButtonSettingColor(gGradientButtonNotCompleted);
+            
+            gPanelDataView.Controls.Clear();
+            uCThesisNotCompleted.SetUpUserControl(this.people);
+            gPanelDataView.Controls.Add(uCThesisNotCompleted);
+        }
     }
 }

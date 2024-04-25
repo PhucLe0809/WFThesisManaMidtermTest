@@ -56,6 +56,7 @@ namespace ThesisManagementProject.Models
         protected int numAccepted;
         protected int numCompleted;
         protected int numTeams;
+        protected int numThesisNotCreatedTask;
 
         #endregion
 
@@ -246,6 +247,11 @@ namespace ThesisManagementProject.Models
         public int NumTeams
         {
             get { return numTeams; }
+        }
+        public int NumThesisNotCreatedTask
+        {
+            get { return numThesisNotCreatedTask; }
+            set { numThesisNotCreatedTask = value; }
         }
 
         #endregion

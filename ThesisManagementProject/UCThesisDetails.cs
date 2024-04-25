@@ -181,11 +181,17 @@ namespace ThesisManagementProject
             if (host.Role == ERole.Lecture && thesis.Status == EThesisStatus.Processing)
             {
                 gGradientButtonComplete.Show();
+                gGradientButtonNotCompleted.Show();
+                return;
             }
-            else
+            if (host.Role == ERole.Student && thesis.Status == EThesisStatus.Processing)
             {
+                gGradientButtonNotCompleted.Show();
                 gGradientButtonComplete.Hide();
+                return;
             }
+            gGradientButtonComplete.Hide();
+            gGradientButtonNotCompleted.Hide();
         }
         private void SetButtonEditOrDetails()
         {
@@ -294,7 +300,7 @@ namespace ThesisManagementProject
             DialogResult result = MessageBox.Show("You have definitely completed the " + thesis.Topic + " thesis",
                                                     "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
-            {          
+            {
                 thesisDAO.UpdateStatus(this.thesis, EThesisStatus.Completed);
                 thesisStatusDAO.UpdateThesisStatus(this.team.IDTeam, this.thesis.IdThesis, EThesisStatus.Completed);
 
@@ -401,5 +407,17 @@ namespace ThesisManagementProject
 
         #endregion
 
+        private void gGradientButtonNotCompleted_Click(object sender, EventArgs e)
+        {
+            FThesisStop fThesisStop = new FThesisStop(host, team, thesis);
+            fThesisStop.Stopped += FThesisStop_Stopped;
+            fThesisStop.ShowDialog();
+        }
+
+        private void FThesisStop_Stopped(object? sender, EventArgs e)
+        {
+            this.flagEdited = true;
+            ResetThesisInfor();
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThesisManagementProject.DAOs;
 using ThesisManagementProject.Database;
 using ThesisManagementProject.Models;
 using ThesisManagementProject.Process;
@@ -21,11 +22,15 @@ namespace ThesisManagementProject
         public event EventHandler ClickNotEvaluate;
         public event EventHandler ClickEvaluate;
         public event EventHandler CustomClick;
+        public event EventHandler ViewNotCompletedClicked;
 
         private MyProcess myProcess = new MyProcess();
         private People people = new People();
         private Evaluation evaluation = new Evaluation();
+        private NotCompleted notCompleted = new NotCompleted();
+        private PeopleDAO peopleDAO = new PeopleDAO();
         private bool isEvaluate = false;
+        private bool isNotCompleted = false;
         private Color uCBackColor = Color.White;
         private Color uCHoverColor = SystemColors.ButtonFace;
 
@@ -49,6 +54,10 @@ namespace ThesisManagementProject
         {
             get { return this.people; }
         }
+        public NotCompleted GetNotCompleted
+        {
+            get { return this.notCompleted; }
+        }
         public Evaluation GetEvaluation
         {
             get { return this.evaluation; }
@@ -62,6 +71,18 @@ namespace ThesisManagementProject
         {
             this.people = people;
             InitUserControl();
+        }
+        public void SetNotCompletedMode(NotCompleted notCompleted)
+        {
+            this.notCompleted = notCompleted;
+            this.isNotCompleted = true;
+
+            this.people = peopleDAO.SelectOnlyByID(notCompleted.IdAccount);
+            InitUserControl();
+
+            gButtonAdd.Hide();
+            gProgressBarToLine.Hide();
+            gButtonComplete.Hide();
         }
         private void InitUserControl()
         {
@@ -187,7 +208,14 @@ namespace ThesisManagementProject
         }
         private void ClickNotEvaluate_Click(object sender, EventArgs e)
         {
-            ShowPeopleInformation();
+            if (this.isNotCompleted)
+            {
+                ViewNotCompletedClicked?.Invoke(this, e);
+            }
+            else
+            {
+                ShowPeopleInformation();
+            }
         }
         private void gButtonAdd_Click(object sender, EventArgs e)
         {

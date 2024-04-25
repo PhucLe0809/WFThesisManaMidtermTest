@@ -36,10 +36,13 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             gPanelBack = new Guna.UI2.WinForms.Guna2Panel();
             gPanelDataView = new Guna.UI2.WinForms.Guna2Panel();
             gGradientButtonViewThesis = new Guna.UI2.WinForms.Guna2GradientButton();
             gGradientButtonStatistical = new Guna.UI2.WinForms.Guna2GradientButton();
+            gGradientButtonNotCompleted = new Guna.UI2.WinForms.Guna2GradientButton();
             gPanelBack.SuspendLayout();
             SuspendLayout();
             // 
@@ -117,6 +120,32 @@
             gGradientButtonStatistical.Text = "Statistical";
             gGradientButtonStatistical.Click += gGradientButtonStatistical_Click;
             // 
+            // gGradientButtonNotCompleted
+            // 
+            gGradientButtonNotCompleted.BackColor = Color.Transparent;
+            gGradientButtonNotCompleted.BorderRadius = 10;
+            gGradientButtonNotCompleted.CustomizableEdges = customizableEdges9;
+            gGradientButtonNotCompleted.DisabledState.BorderColor = Color.DarkGray;
+            gGradientButtonNotCompleted.DisabledState.CustomBorderColor = Color.DarkGray;
+            gGradientButtonNotCompleted.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            gGradientButtonNotCompleted.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            gGradientButtonNotCompleted.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            gGradientButtonNotCompleted.FillColor = SystemColors.ControlLight;
+            gGradientButtonNotCompleted.FillColor2 = SystemColors.ButtonFace;
+            gGradientButtonNotCompleted.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gGradientButtonNotCompleted.ForeColor = Color.Black;
+            gGradientButtonNotCompleted.HoverState.FillColor = Color.FromArgb(94, 148, 255);
+            gGradientButtonNotCompleted.HoverState.FillColor2 = Color.FromArgb(255, 77, 165);
+            gGradientButtonNotCompleted.HoverState.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gGradientButtonNotCompleted.HoverState.ForeColor = Color.White;
+            gGradientButtonNotCompleted.Location = new Point(279, 9);
+            gGradientButtonNotCompleted.Name = "gGradientButtonNotCompleted";
+            gGradientButtonNotCompleted.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            gGradientButtonNotCompleted.Size = new Size(140, 40);
+            gGradientButtonNotCompleted.TabIndex = 6;
+            gGradientButtonNotCompleted.Text = "Not Completed";
+            gGradientButtonNotCompleted.Click += gGradientButtonNotCompleted_Click;
+            // 
             // UCDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -126,6 +155,7 @@
             Controls.Add(gPanelBack);
             Controls.Add(gGradientButtonViewThesis);
             Controls.Add(gGradientButtonStatistical);
+            Controls.Add(gGradientButtonNotCompleted);
             DoubleBuffered = true;
             Name = "UCDashboard";
             Size = new Size(1329, 829);
@@ -138,5 +168,6 @@
         private Guna.UI2.WinForms.Guna2GradientButton gGradientButtonViewThesis;
         private Guna.UI2.WinForms.Guna2GradientButton gGradientButtonStatistical;
         private Guna.UI2.WinForms.Guna2Panel gPanelDataView;
+        private Guna.UI2.WinForms.Guna2GradientButton gGradientButtonNotCompleted;
     }
 }

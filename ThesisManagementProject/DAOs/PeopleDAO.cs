@@ -33,6 +33,20 @@ namespace ThesisManagementProject.DAOs
 
             return list;
         }
+        public List<People> SelectPeopleNotCompleted(People instructor)
+        {
+            string command = string.Format("SELECT * FROM {0} WHERE idinstructor = '{1}'", MyDatabase.DBNotCompleted, instructor.IdAccount);
+
+            DataTable dataTable = Select(command);
+
+            List<People> list = new List<People>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                list.Add(SelectOnlyByID(row["idaccount"].ToString()));
+            }
+
+            return list;
+        }
         public People SelectOnlyByID(string id)
         {
             DataTable dt = Select(string.Format("SELECT * FROM {0} WHERE idaccount = '{1}'", MyDatabase.DBAccount, id));

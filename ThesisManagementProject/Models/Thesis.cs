@@ -64,7 +64,9 @@ namespace ThesisManagementProject.Models
         [Display(Name = "Processing")]
         Processing,
         [Display(Name = "Completed")]
-        Completed
+        Completed,
+        [Display(Name = "NotCompleted")]
+        NotCompleted,
     }
 
     #endregion

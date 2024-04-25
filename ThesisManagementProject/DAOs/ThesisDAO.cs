@@ -55,6 +55,12 @@ namespace ThesisManagementProject.DAOs
             string command = string.Format("SELECT * FROM {0} WHERE idinstructor = '{1}'", MyDatabase.DBThesis, idAccount);
             return SelectList(command);
         }
+        public List<Thesis> SelectListRoleLectureModeCompleted(string idAccount)
+        {
+            string command = string.Format("SELECT * FROM {0} WHERE idinstructor = '{1}' and status = '{2}'", 
+                MyDatabase.DBThesis, idAccount, EThesisStatus.Completed.ToString());
+            return SelectList(command);
+        }
         public List<Thesis> SelectListRoleStudent(string idAccount)
         {
             string command = string.Format("SELECT * FROM {0} WHERE status IN ('Published', 'Registered') " +
@@ -143,7 +149,7 @@ namespace ThesisManagementProject.DAOs
             string idThesis = row["idthesis"].ToString();
             string topic = row["topic"].ToString();
             EField field = myProcess.GetEnumFromDisplayName<EField>(row["field"].ToString());
-            ELevel level = myProcess.GetEnumFromDisplayName<ELevel>(row["tslevel"].ToString());
+            ELevel level = myProcess.GetEnumFromDisplayName<ELevel>(row["level"].ToString());
             int maxMembers = int.Parse(row["maxmembers"].ToString());
             string description = row["description"].ToString();
             DateTime publishDate = DateTime.Parse(row["publishdate"].ToString());

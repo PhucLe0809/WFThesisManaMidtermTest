@@ -15,6 +15,7 @@ namespace ThesisManagementProject.Database
         public static string DBComment = "Comment";
         public static string DBEvaluation = "Evaluation";
         public static string DBNotification = "Notification";
+        public static string DBNotCompleted = "NotCompleted";
         public static string DBThesisStatus = "ThesisStatus";
         public static string DBTechnology = "Technology";
     }
